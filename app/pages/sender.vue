@@ -75,6 +75,7 @@ const { $auth, $firebaseApp } = useNuxtApp()
 const db = getFirestore($firebaseApp)
 const auth = $auth
 
+const subject = ref('')
 const detail = ref(`<h1>You can upload image.</h1><p>This editor demonstrates how to create a custom TipTap extension with handlers.</p><p>Click the image button in the toolbar to upload a file — it will show a custom [FileUpload](/docs/components/file-upload) interface before inserting the image.</p><p>Try uploading an image below:</p>`)
 const plain = ref('')
 const source = ref(detail.value)
@@ -206,4 +207,45 @@ onMounted(async() => {
     }
   })
 })
+
+watch(detail, (v) => {
+  source.value = v
+  plain.value = v.replace(/<[^>]*>/g, '')
+})
+
+function sourceToDetail(){
+  detail.value = source.value
+}
+
+async function nodeSend(){
+  if (!import.meta.client) {
+    console.error("通信エラー2")
+
+    return;
+  }
+
+  const nodeMailerAll = httpsCallable(getFunctions($firebaseApp, "us-central1"),"mailsSender")
+
+  try {
+    const res = await nodeMailerAll(
+      {
+        subject: subject.value,
+        detail: detail.value,
+        plain: plain.value
+      }
+    );
+
+    if (res.data?.result) {
+      console.log(res.data?.result)
+    }
+    else {
+      console.error('送信エラー')
+    }
+
+    detail.value=''
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
 </script>

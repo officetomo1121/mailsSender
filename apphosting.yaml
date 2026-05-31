@@ -24,3 +24,9 @@ env:
 
   - variable: NUXT_PUBLIC_RECAPTCHA_SITE_KEY
     secret: projects/32342919024/secrets/NUXT_PUBLIC_RECAPTCHA_SITE_KEY/versions/1
+
+  - variable: SMTP_USER
+    secret: projects/32342919024/secrets/SMTP_USER/versions/1
+
+  - variable: SMTP_PASS
+    secret: projects/32342919024/secrets/SMTP_PASS/versions/1

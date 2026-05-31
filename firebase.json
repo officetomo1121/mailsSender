@@ -10,7 +10,7 @@
         "firebase-debug.*.log",
         "functions"
       ]
-    },
+    }
   ],
   "firestore": {
     "database": "(default)",
@@ -21,7 +21,7 @@
   "functions": [
     {
       "source": "functions",
-      "codebase": "default",
+      "codebase": "mailssender",
       "disallowLegacyRuntimeConfig": true,
       "ignore": [
         "node_modules",
