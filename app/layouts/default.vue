@@ -1,10 +1,6 @@
 <template>
   <div class="max-w-[1920px] mx-auto shadow-lg">
-    <Header class="sticky top-0" />
-
     <slot />
-
-    <Footer />
   </div>
 </template>
 
