@@ -29,9 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { getFunctions, httpsCallable } from "firebase/functions"
-import { getAuth, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 const disp = '2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-5xl text-5xl'
 const h1 = '2xl:text-6xl xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-2xl'
@@ -48,7 +47,14 @@ const auth = $auth
 const email = ref('')
 const pass = ref('')
 
-onMounted(() => {
-
+onMounted(async() => {
+  onAuthStateChanged(auth, async(user) => {
+    if (!user) {
+      return
+    }
+    else{
+      await navigateTo('/sender')
+    }
+  })
 })
 </script>
