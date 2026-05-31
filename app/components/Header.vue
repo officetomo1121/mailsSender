@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white py-3 shadow z-3">
+  <div class="w-full bg-white py-3 shadow z-3 border-bottom border-slate-300">
       <div class="flex items-center relative h-16 sm:w-auto w-full">
         <div class="absolute w-full text-center top-1/2 -translate-y-1/2 sm:hidden">
           <h1 :class="`${h1} m-0 fw-bold text-center text-nowrap text-slate-500`">MAILS SENDER</h1>
