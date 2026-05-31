@@ -224,7 +224,7 @@ async function nodeSend(){
     return;
   }
 
-  const nodeMailerAll = httpsCallable(getFunctions($firebaseApp, "us-central1"),"mailsSender")
+  const nodeMailerAll = httpsCallable(getFunctions($firebaseApp, "us-east5"),"mailsSender")
 
   try {
     const res = await nodeMailerAll(
