@@ -11,11 +11,7 @@ export default defineNuxtConfig({
   },
   ssr:true,
 
-  runtimeConfig: {    
-    fbProjectId: process.env.FB_PROJECT_ID,
-    fbClientEmail: process.env.FB_CLIENT_EMAIL,
-    fbPrivateKey: process.env.FB_PRIVATE_KEY,
-    
+  runtimeConfig: {
     public: {
       // Public keys that are exposed to the client-side
       firebaseApiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
