@@ -75,6 +75,130 @@ const { $auth, $firebaseApp } = useNuxtApp()
 const db = getFirestore($firebaseApp)
 const auth = $auth
 
+const detail = ref(`<h1>You can upload image.</h1><p>This editor demonstrates how to create a custom TipTap extension with handlers.</p><p>Click the image button in the toolbar to upload a file — it will show a custom [FileUpload](/docs/components/file-upload) interface before inserting the image.</p><p>Try uploading an image below:</p>`)
+const plain = ref('')
+const source = ref(detail.value)
+
+const customHandlers = {
+  imageUpload: {
+    canExecute: (editor: Editor) => editor.can().insertContent({ type: 'imageUpload' }),
+    execute: (editor: Editor) => editor.chain().focus().insertContent({ type: 'imageUpload' }),
+    isActive: (editor: Editor) => editor.isActive('imageUpload'),
+    isDisabled: undefined
+  }
+} satisfies EditorCustomHandlers
+
+const items: EditorSuggestionMenuItem[][] = [
+  [
+    {
+      kind: 'imageUpload',
+      icon: 'i-lucide-image',
+      label: 'Add image',
+      variant: 'soft'
+    }
+  ],
+  [
+    {
+      icon: 'i-lucide-heading',
+      content: {
+        align: 'start'
+      },
+      items: [
+        {
+          kind: 'heading',
+          level: 1,
+          icon: 'i-lucide-heading-1',
+          label: 'Heading 1'
+        },
+        {
+          kind: 'heading',
+          level: 2,
+          icon: 'i-lucide-heading-2',
+          label: 'Heading 2'
+        },
+        {
+          kind: 'heading',
+          level: 3,
+          icon: 'i-lucide-heading-3',
+          label: 'Heading 3'
+        },
+        {
+          kind: 'heading',
+          level: 4,
+          icon: 'i-lucide-heading-4',
+          label: 'Heading 4'
+        }
+      ]
+    }
+  ],
+  [
+    {
+      kind: 'mark',
+      mark: 'bold',
+      icon: 'i-lucide-bold'
+    },
+    {
+      kind: 'mark',
+      mark: 'italic',
+      icon: 'i-lucide-italic'
+    },
+    {
+      kind: 'mark',
+      mark: 'underline',
+      icon: 'i-lucide-underline'
+    },
+    {
+      kind: 'mark',
+      mark: 'strike',
+      icon: 'i-lucide-strikethrough'
+    },
+    {
+      kind: 'mark',
+      mark: 'code',
+      icon: 'i-lucide-code'
+    }
+  ],
+  [
+    {
+      kind: 'bulletList',
+      icon: 'i-lucide-list'
+    },
+    {
+      kind: 'orderedList',
+      icon: 'i-lucide-list-ordered'
+    },
+    {
+      kind: 'blockquote',
+      icon: 'i-lucide-quote'
+    }
+  ],
+  [
+    {
+      kind: 'link',
+      icon: 'i-lucide-link'
+    }
+  ],
+  [
+    {
+      kind: 'textAlign',
+      align: 'left',
+      icon: 'i-lucide-align-left'
+    },
+    {
+      kind: 'textAlign',
+      align: 'center',
+      icon: 'i-lucide-align-center'
+    },
+    {
+      kind: 'textAlign',
+      align: 'right',
+      icon: 'i-lucide-align-right'
+    }
+  ]
+] satisfies EditorToolbarItem<typeof customHandlers>[][]
+
+const appendToBody = import.meta.client ? () => document.body : undefined
+
 onMounted(async() => {
   onAuthStateChanged(auth, async(user) => {
     if (!user) {
