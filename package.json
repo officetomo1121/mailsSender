@@ -1,0 +1,27 @@
+{
+  "name": "mailsSender",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
+    "@nuxt/ui": "^4.3.0",
+    "@nuxt/fonts": "^0.12.1",
+    "@supercharge/promise-pool": "^3.3.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "firebase": "^12.7.0",
+    "firebase-admin": "^13.9.0",
+    "firebase-functions": "^7.0.2",
+    "nuxt": "^4.4.6",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.34",
+    "vue-router": "^5.0.7"
+  }
+}
