@@ -19,7 +19,7 @@
         <UEditorToolbar
           :editor="editor"
           :items="items"
-          class="sticky border-b border-muted py-2 px-8 sm:px-16 overflow-x-auto"
+          class="border-b border-muted py-2 px-8 sm:px-16 overflow-x-auto"
         />
         <UEditorDragHandle :editor="editor" />
         <UEditorSuggestionMenu :editor="editor" :items="items" :append-to="appendToBody" />
@@ -49,7 +49,6 @@
 
 <script setup lang="ts">
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { doc, getDocs, collection, getFirestore } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions"
 
 import { PromisePool } from '@supercharge/promise-pool'
@@ -71,8 +70,6 @@ const ps = 'font-noto 2xl:text-md xl:text-sm lg:text-xs md:text-xs sm:text-xs te
 const placeholderH5 = 'font-noto 2xl:autofill:placeholder:text-2xl xl:autofill:placeholder:text-xl lg:autofill:placeholder:text-lg md:autofill:placeholder:text-md sm:autofill:placeholder:text-sm autofill:placeholder:text-sm'
 
 const { $auth, $firebaseApp } = useNuxtApp()
-
-const db = getFirestore($firebaseApp)
 const auth = $auth
 
 const subject = ref('')
@@ -224,10 +221,10 @@ async function nodeSend(){
     return;
   }
 
-  const nodeMailerAll = httpsCallable(getFunctions($firebaseApp, "us-central1"),"mailsSender")
+  const mailsSender = httpsCallable(getFunctions($firebaseApp, "us-central1"),"mailsSender")
 
   try {
-    const res = await nodeMailerAll(
+    const res = await mailsSender(
       {
         subject: subject.value,
         detail: detail.value,
