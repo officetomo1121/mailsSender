@@ -22,7 +22,7 @@ exports.mailsSender = onCall(
     enforceAppCheck: true, // Reject requests with missing or invalid App Check tokens.
     consumeAppCheckToken: true,  // Consume the token after verification.
     
-    secrets: [ "SMTP_USER", "SMTP_PASS", "SMTP_HOST", "SMTP_PORT", "SMTP_SECURE", "MAIL_FROM" ] //secretManager使用宣言。これだけで良い
+    secrets: ["SMTP_USER", "SMTP_PASS", "SMTP_HOST", "SMTP_PORT", "SMTP_SECURE", "MAIL_FROM"] //secretManager使用宣言。これだけで良い
   },
   async(request) => {
     const { subject, detail, plain } = request.data;
