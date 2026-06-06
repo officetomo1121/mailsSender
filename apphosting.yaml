@@ -30,3 +30,15 @@ env:
 
   - variable: SMTP_PASS
     secret: projects/32342919024/secrets/SMTP_PASS/versions/1
+
+  - variable: SMTP_HOST
+    secret: projects/32342919024/secrets/SMTP_HOST/versions/1
+
+  - variable: SMTP_PORT
+    secret: projects/32342919024/secrets/SMTP_PORT/versions/1
+
+  - variable: SMTP_SECURE
+    secret: projects/32342919024/secrets/SMTP_SECURE/versions/1
+
+  - variable: MAIL_FROM
+    secret: projects/32342919024/secrets/MAIL_FROM/versions/1
