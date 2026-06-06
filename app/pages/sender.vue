@@ -1,7 +1,7 @@
 <template>
   <header class="flex justify-between shadow-lg border-b border-slate-200"">
     <h3 class="text-sm/6 font-semibold text-gray-900 px-3">MailsSender</h3>
-    <div class="p-2 my-3>
+    <div class="p-2 my-3">
       <p class="rounded-md border border-blue-700 bg-white px-4.5 py-1 font-semibold text-nowrap text-blue-700 shadow-xs hover:bg-blue-700 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer font-noto" @click="glogout">ログアウト</p>
     </div>
   </header>
