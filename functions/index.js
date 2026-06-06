@@ -9,7 +9,7 @@ if (!admin.apps.length) {
 
 async function getAllUsers() {
   const snapshot = await admin.firestore()
-    .collection('test')
+    .collection('mailto')
     .where('subscribe', '==', true)
     .get()
 
@@ -24,13 +24,10 @@ exports.mailsSender = onCall(
     
     secrets: ["SMTP_USER", "SMTP_PASS"] //secretManager使用宣言。これだけで良い
   },
-  async(request) => {console.log('CALL START')
-    console.log(request.auth)
-    console.log(request.app)
+  async(request) => {
     const { subject, detail, plain } = request.data;
 
     const users = await getAllUsers()
-    
     console.log(`${users.length}件取得`)
 
     // 環境変数から認証情報を取得
@@ -81,7 +78,7 @@ exports.mailsSender = onCall(
           return { result: true,from:mailFrom,to:user }
         } catch (error) {
           console.error(error);
-          return { result: false,from:mailFrom,to:user,cc:mailCc,html:htmlContent };
+          return { result: false,from:mailFrom,to:user,cc:mailCc };
         }
     })
 
