@@ -10,12 +10,7 @@
       <UEditor
         v-slot="{ editor }"
         v-model="detail"
-        :extensions="[ImageUpload,
-                      StarterKit,
-                      TextAlign.configure({
-                        types: ['heading', 'paragraph'],
-                      })
-                     ]"
+        :extensions="[ImageUpload]"
         :handlers="customHandlers"
         content-type="html"
         :ui="{ base: 'p-8 sm:px-16' }"
@@ -110,6 +105,11 @@ const items: EditorSuggestionMenuItem[][] = [
       },
       items: [
         {
+          kind: 'paragraph',
+          label: 'Paragraph',
+          icon: 'i-lucide-type'
+        },
+        {
           kind: 'heading',
           level: 1,
           icon: 'i-lucide-heading-1',
@@ -158,23 +158,31 @@ const items: EditorSuggestionMenuItem[][] = [
       icon: 'i-lucide-strikethrough'
     },
     {
-      kind: 'mark',
-      mark: 'code',
-      icon: 'i-lucide-code'
+      kind: 'codeBlock',
+      label: 'Code Block',
+      icon: 'i-lucide-square-code'
+    },
+    {
+      kind: 'horizontalRule',
+      label: 'Divider',
+      icon: 'i-lucide-separator-horizontal'
     }
   ],
   [
     {
       kind: 'bulletList',
+      label: 'Bullet List',
       icon: 'i-lucide-list'
     },
     {
       kind: 'orderedList',
+      label: 'Numbered List',
       icon: 'i-lucide-list-ordered'
     },
     {
       kind: 'blockquote',
-      icon: 'i-lucide-quote'
+      label: 'Blockquote',
+      icon: 'i-lucide-text-quote'
     }
   ],
   [
