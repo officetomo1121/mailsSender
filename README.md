@@ -4,8 +4,10 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 
 管理画面からHTMLメールおよびプレーンテキストメールを作成し、配信対象者へ送信できます。
 
-## Feature
 
+# Feature
+
+```text
 ・メール一斉配信
 ・HTMLメール作成
 ・プレーンテキストメール作成
@@ -14,10 +16,13 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 ・Google Workspace SMTPによるメール送信
 ・Firebase Authenticationによる認証
 ・Firebase App Checkによる不正利用対策
+```
 
-## Setup
+# Setup
 
-# システム構成
+## システム構成
+
+```text
 フロントエンド：Nuxt 4
 バックエンド：Firebase Cloud Functions
 データベース：Cloud Firestore
@@ -25,26 +30,34 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 セキュリティ：Firebase App Check
 ホスティング：Firebase App Hosting
 リッチエディタ：Nuxt UI Editor（Tiptap）
+```
 
-# Firestore構成
+
+## Firestore構成
+
+```text
 コレクション名：mailto
 ドキュメント　：送信先メールアドレス
 フィールド　　：
 {
   "subscribe": true
 }
+```
 
-# 必要なFirebaseプロダクト
+## 必要なFirebaseプロダクト
 
 本プロジェクトでは以下のFirebaseプロダクトを利用します。
 
+```text
 ・Cloud Functions（Cloud Run）
 ・Cloud Firestore
 ・App Hosting
 ・Firebase Authentication
 ・Firebase App Check
+```
 
-# SMTPサーバー設定
+
+## SMTPサーバー設定
 
 本システムは初期状態では Gmail SMTP を利用する設定になっています。
 
@@ -77,14 +90,14 @@ SMTP_USER
 SMTP_PASS
 ```
 
-# Secret Manager
+## Secret Manager
 
 シークレット管理には、Google Cloud Platformのシークレットマネージャーを用いることを想定しています。apphosting.yamlを適宜書き換えてください。
 
-# その他
+## その他
 
 ログイン権限者の登録、送信先アドレスの登録は、Firebase Consoleで直接作成してください。
 
-## License
+# License
 
 MIT License
