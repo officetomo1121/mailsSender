@@ -24,7 +24,9 @@ exports.mailsSender = onCall(
     
     secrets: ["SMTP_USER", "SMTP_PASS"] //secretManager使用宣言。これだけで良い
   },
-  async(request) => {
+  async(request) => {console.log('CALL START')
+    console.log(request.auth)
+    console.log(request.app)
     const { subject, detail, plain } = request.data;
 
     const users = await getAllUsers()
@@ -51,9 +53,6 @@ exports.mailsSender = onCall(
       console.error("Missing SMTP credentials or mail addresses in environment variables.");
       return { result: false, error: "Configuration error." };
     }
-
-    console.log(detail)
-    console.log(plain)
     
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
