@@ -8,22 +8,12 @@ if (!admin.apps.length) {
 }
 
 async function getAllUsers() {
-  let users = []
-  let nextPageToken
+  const snapshot = await admin.firestore()
+    .collection('mailto')
+    .where('subscribe', '==', true)
+    .get()
 
-  do {
-    const result = await admin.auth().listUsers(1000, nextPageToken)
-
-    users.push(
-      ...result.users
-        .filter(user => user.email) // メールアドレスがある人だけ
-        .map(user => user.email)
-    )
-
-    nextPageToken = result.pageToken
-  } while (nextPageToken)
-
-  return users
+  return snapshot.docs.map(doc => doc.id)
 }
 
 exports.mailsSender = onCall(

@@ -2,7 +2,7 @@
   <div class="p-2">
     <div class="mb-3">
       <label for="full-name" class="block text-sm/6 font-semibold text-gray-900 flex">題名</label>
-      <input type="text" v-model="subject" :class="`${p} block w-full border border-slate-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-lg`"/>
+      <input type="text" v-model="subject" class="block w-full border border-slate-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-lg"/>
     </div>
 
     <div class="">
@@ -109,11 +109,6 @@ const items: EditorSuggestionMenuItem[][] = [
       },
       items: [
         {
-          kind: 'paragraph',
-          label: 'Paragraph',
-          icon: 'i-lucide-type'
-        },
-        {
           kind: 'heading',
           level: 1,
           icon: 'i-lucide-heading-1',
@@ -136,6 +131,11 @@ const items: EditorSuggestionMenuItem[][] = [
           level: 4,
           icon: 'i-lucide-heading-4',
           label: 'Heading 4'
+        },
+        {
+          kind: 'paragraph',
+          label: 'Paragraph',
+          icon: 'i-lucide-type'
         }
       ]
     }
