@@ -10,7 +10,11 @@
       <UEditor
         v-slot="{ editor }"
         v-model="detail"
-        :extensions="[ImageUpload]"
+        :extensions="[ImageUpload,
+                      TextAlign.configure({
+                        types: ['heading', 'paragraph']
+                      })
+                     ]"
         :handlers="customHandlers"
         content-type="html"
         :ui="{ base: 'p-8 sm:px-16' }"
