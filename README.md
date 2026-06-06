@@ -12,10 +12,9 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 ・HTMLメール作成
 ・プレーンテキストメール作成
 ・Firestoreによる配信先管理
-・配信対象者の購読状態（subscribe）の管理
-・Google Workspace SMTPによるメール送信
 ・Firebase Authenticationによる認証
 ・Firebase App Checkによる不正利用対策
+・GCP Secret Managerによるシークレット管理
 ```
 
 
@@ -23,13 +22,14 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 ## システム構成
 
 ```text
-・フロントエンド：Nuxt 4
-・バックエンド：Firebase Cloud Functions
-・データベース：Cloud Firestore
-・認証：Firebase Authentication
-・セキュリティ：Firebase App Check
-・ホスティング：Firebase App Hosting
-・リッチエディタ：Nuxt UI Editor（Tiptap）
+・フロントエンド　：Nuxt 4
+・バックエンド　　：Firebase Cloud Functions
+・データベース　　：Cloud Firestore
+・認証　　　　　　：Firebase Authentication
+・セキュリティ　　：Firebase App Check
+・ホスティング　　：Firebase App Hosting
+・シークレット管理：GCP Secret Manager
+・リッチエディタ　：Nuxt UI Editor（Tiptap）
 ```
 
 
@@ -60,31 +60,16 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 
 ## SMTPサーバー設定
 
-本システムは初期状態では Gmail SMTP を利用する設定になっています。
+本システムはSMTPサーバー設定は、GCP Secret Managerで管理する仕様といています。
 
 ```javascript
-host: 'smtp.gmail.com',
-port: 587,
-secure: false
+host: SMTP_HOST,
+port: SMTP_PORT,
+secure: SMTP_SECURE
 ```
 
-他のメールサービスを利用する場合は、Cloud Functions 内の SMTP 設定を環境に合わせて変更してください。
-
-例：
-
-```javascript
-host: 'smtp.office365.com',
-port: 587,
-secure: false
-```
-
-```javascript
-host: 'mail.example.com',
-port: 587,
-secure: false
-```
-
-認証情報は Google Cloud Secret Manager で管理することを推奨します。
+メールサービスに応じ、GCP Secret Managerでシークレット管理してください。
+その他認証情報も同様に、GCP Secret Managerで管理する仕様です。
 
 ```text
 SMTP_USER
