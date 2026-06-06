@@ -1,4 +1,10 @@
 <template>
+  <header class="flex flex-row-reverse justify-between">
+    <div class="mb-2">
+      <p class="rounded-md border border-blue-700 bg-white px-4.5 py-1 font-semibold text-nowrap text-blue-700 shadow-xs hover:bg-blue-700 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer font-noto" @click="glogout">ログアウト</p>
+    </div>
+  </header>
+
   <div class="p-2 mt-5">
     <div class="mb-3">
       <label for="full-name" class="block text-sm/6 font-semibold text-gray-900 flex">題名</label>
@@ -46,11 +52,11 @@
 
 		<hr>
 
-		<div class="flex justify-around pt-3">
+		<div class="pt-3">
 			<div class="w-1/3">
 				<button v-on:click="nodeSend" variant="outline-primary" size="md" type="button" class="w-full cursor-pointer block rounded-md bg-cyan-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-lg hover:bg-cyan-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" aria-label="送信ボタンです"><p>送信</p></button>
 			</div>
-      <p v-if="results">{{ results }}</p>
+      <p v-if="results.length > 0">{{ results }}</p>
 		</div>
 	</div>
 </template>
@@ -230,7 +236,7 @@ function sourceToDetail(){
 
 async function nodeSend(){
   results.value=[]
-  
+
   if (!import.meta.client) {
     console.error("通信エラー2")
 
@@ -256,5 +262,9 @@ async function nodeSend(){
     results.value=res.data
     results.value.push(error)
   }
+}
+
+async function glogout(){
+  signOut(auth)
 }
 </script>
