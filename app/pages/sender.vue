@@ -1,6 +1,6 @@
 <template>
-  <header class="flex flex-row-reverse justify-between">
-    <div class="mb-2">
+  <header class="flex flex-row-reverse justify-between border-bottom border-slate-300">
+    <div class="my-5">
       <p class="rounded-md border border-blue-700 bg-white px-4.5 py-1 font-semibold text-nowrap text-blue-700 shadow-xs hover:bg-blue-700 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer font-noto" @click="glogout">ログアウト</p>
     </div>
   </header>
