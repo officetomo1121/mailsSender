@@ -10,7 +10,12 @@
       <UEditor
         v-slot="{ editor }"
         v-model="detail"
-        :extensions="[ImageUpload]"
+        :extensions="[ImageUpload,
+                      StarterKit,
+                      TextAlign.configure({
+                        types: ['heading', 'paragraph'],
+                      })
+                     ]"
         :handlers="customHandlers"
         content-type="html"
         :ui="{ base: 'p-8 sm:px-16' }"
@@ -55,6 +60,8 @@ import { PromisePool } from '@supercharge/promise-pool'
 
 import type { EditorCustomHandlers, EditorToolbarItem } from '@nuxt/ui'
 import type { Editor } from '@tiptap/vue-3'
+import StarterKit from '@tiptap/starter-kit';
+import TextAlign from '@tiptap/extension-text-align'
 import { ImageUpload } from '../utils/editor/EditorImageUploadExtension'
 import type { EditorSuggestionMenuItem } from '@nuxt/ui'
 
