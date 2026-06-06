@@ -1,6 +1,6 @@
 <template>
   <header class="flex justify-between shadow-lg border-b border-slate-200">
-    <h3 class="text-sm/6 font-semibold text-gray-900 px-3">MailsSender</h3>
+    <h3 class="text-sm/6 font-semibold text-gray-900 px-3 my-auto">MailsSender</h3>
     <div class="p-2 my-3">
       <p class="rounded-md border border-blue-700 bg-white px-4.5 py-1 font-semibold text-nowrap text-blue-700 shadow-xs hover:bg-blue-700 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer font-noto" @click="glogout">ログアウト</p>
     </div>
@@ -9,7 +9,7 @@
   <div class="p-2 mt-5">
     <div class="mb-3">
       <label for="full-name" class="block text-sm/6 font-semibold text-gray-900 flex">題名</label>
-      <input type="text" v-model="subject" class="block w-full border border-slate-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-lg"/>
+      <input type="text" v-model="subject" class="block w-full border border-slate-200 rounded-sm bg-white px-3.5 py-3 text-base text-gray-900 shadow-lg"/>
     </div>
 
     <div class="">
@@ -39,15 +39,15 @@
       </ClientOnly>
 
       <div class="md:grid grid-cols-2 gap-2 mb-3">
-        <textarea v-model="source" class="md:col-span-1 w-full border border-slate-300 shadow-lg" rows="10">
+        <textarea v-model="source" class="md:col-span-1 w-full border border-slate-200 rounded-sm shadow-lg" rows="10">
 
         </textarea>
-        <textarea v-model="plain" class="md:col-span-1 w-full border border-slate-300 shadow-lg" rows="10">
+        <textarea v-model="plain" class="md:col-span-1 w-full border border-slate-200 rounded-sm shadow-lg" rows="10">
 
         </textarea>
       </div>
       <div>
-        <button class="my-2 bg-black text-center text-white p-2 rounded border border-slate-300 shadow-lg" @click="sourceToDetail">htmlソースをUEditorへ</button>
+        <button class="my-2 bg-black text-center text-white p-2 rounded border border-slate-200 shadow-lg" @click="sourceToDetail">htmlソースをUEditorへ</button>
       </div>
     </div>
 
