@@ -7,27 +7,30 @@
 
     <div class="">
       <label for="full-name" class="block text-sm/6 font-semibold text-gray-900 flex">配信内容</label>
-      <UEditor
-        v-slot="{ editor }"
-        v-model="detail"
-        :extensions="[ImageUpload,
-                      TextAlign.configure({
-                        types: ['paragraph', 'heading']
-                      })
-                     ]"
-        :handlers="customHandlers"
-        content-type="html"
-        :ui="{ base: 'p-8 sm:px-16' }"
-        class="w-full min-h-74 border border-slate-300 shadow-lg mb-3"
-      >
-        <UEditorToolbar
-          :editor="editor"
-          :items="items"
-          class="border-b border-muted py-2 px-8 sm:px-16 overflow-x-auto"
-        />
-        <UEditorDragHandle :editor="editor" />
-        <UEditorSuggestionMenu :editor="editor" :items="items" :append-to="appendToBody" />
-      </UEditor>
+      <ClientOnly>
+        <UEditor
+          v-slot="{ editor }"
+          v-model="detail"
+          :extensions="[ImageUpload,
+                        TextAlign.configure({
+                          types: ['paragraph', 'heading']
+                        })
+                       ]"
+          :handlers="customHandlers"
+          content-type="html"
+          :ui="{ base: 'p-8 sm:px-16' }"
+          class="w-full min-h-74 border border-slate-300 shadow-lg mb-3"
+        >
+          <UEditorToolbar
+            :editor="editor"
+            :items="items"
+            class="border-b border-muted py-2 px-8 sm:px-16 overflow-x-auto"
+          />
+          <UEditorDragHandle :editor="editor" />
+          <UEditorSuggestionMenu :editor="editor" :items="items" :append-to="appendToBody" />
+        </UEditor>
+      </ClientOnly>
+
       <div class="md:grid grid-cols-2 gap-2 mb-3">
         <textarea v-model="source" class="md:col-span-1 w-full border border-slate-300 shadow-lg" rows="10">
 
