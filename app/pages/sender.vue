@@ -52,12 +52,13 @@
 
 		<hr>
 
-		<div class="pt-3">
+		<div class="pt-3 flex flex-center">
 			<div class="w-1/3">
 				<button v-on:click="nodeSend" variant="outline-primary" size="md" type="button" class="w-full cursor-pointer block rounded-md bg-cyan-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-lg hover:bg-cyan-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" aria-label="送信ボタンです"><p>送信</p></button>
 			</div>
-      <p v-if="results.length > 0">{{ results }}</p>
 		</div>
+
+    <p v-if="results.length > 0">{{ results }}</p>
 	</div>
 </template>
 
