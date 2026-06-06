@@ -49,7 +49,7 @@ exports.mailsSender = onCall(
 			htmlContent += '<footer style="width:100%; padding-top:1rem;"><center><p class="psmall">This site is powered by Nuxt4 + Google Firebase.<br>Copyright OFFICE+<span style="color:blue;">T</span> All Rights Reserved.</p></center></footer></div></body></html>';
 
     // 環境変数が設定されているか確認 (開発時などに役立ちます)
-    if (!smtpUser || !smtpPass || !mailFrom || !mailCc) {
+    if (!smtpUser || !smtpPass) {
       console.error("Missing SMTP credentials or mail addresses in environment variables.");
       return { result: false, error: "Configuration error." };
     }
