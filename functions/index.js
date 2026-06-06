@@ -9,7 +9,7 @@ if (!admin.apps.length) {
 
 async function getAllUsers() {
   const snapshot = await admin.firestore()
-    .collection('mailto')
+    .collection('test')
     .where('subscribe', '==', true)
     .get()
 
