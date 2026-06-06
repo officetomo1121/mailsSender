@@ -29,15 +29,15 @@
         <UEditorSuggestionMenu :editor="editor" :items="items" :append-to="appendToBody" />
       </UEditor>
       <div class="md:grid grid-cols-2 gap-2 mb-3">
-        <textarea v-model="source" class="md:col-span-1 w-full border border-slate-300" rows="10">
+        <textarea v-model="source" class="md:col-span-1 w-full border border-slate-300 shadow-lg" rows="10">
 
         </textarea>
-        <textarea v-model="plain" class="md:col-span-1 w-full border border-slate-300" rows="10">
+        <textarea v-model="plain" class="md:col-span-1 w-full border border-slate-300 shadow-lg" rows="10">
 
         </textarea>
       </div>
       <div>
-        <button class="bg-black text-center text-white p-2 rounded border border-slate-300" @click="sourceToDetail">htmlソースをUEditorへ</button>
+        <button class="my-2 bg-black text-center text-white p-2 rounded border border-slate-300 shadow-lg" @click="sourceToDetail">htmlソースをUEditorへ</button>
       </div>
     </div>
 
@@ -63,17 +63,6 @@ import StarterKit from '@tiptap/starter-kit';
 import TextAlign from '@tiptap/extension-text-align'
 import { ImageUpload } from '../utils/editor/EditorImageUploadExtension'
 import type { EditorSuggestionMenuItem } from '@nuxt/ui'
-
-const disp = '2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-5xl text-5xl'
-const h1 = '2xl:text-6xl xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-2xl'
-const h2 = '2xl:text-5xl xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-xl'
-const h3 = '2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-lg'
-const h4 = '2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg sm:text-md text-md'
-const h5 = '2xl:text-2xl xl:text-xl lg:text-lg md:text-md sm:text-sm text-sm'
-const p  = '2xl:text-xl xl:text-lg lg:text-md md:text-sm sm:text-xs text-xs'
-const ps = '2xl:text-md xl:text-sm lg:text-xs md:text-xs sm:text-xs text-xs'
-
-const placeholderH5 = '2xl:autofill:placeholder:text-2xl xl:autofill:placeholder:text-xl lg:autofill:placeholder:text-lg md:autofill:placeholder:text-md sm:autofill:placeholder:text-sm autofill:placeholder:text-sm'
 
 const { $auth, $firebaseApp } = useNuxtApp()
 const auth = $auth
