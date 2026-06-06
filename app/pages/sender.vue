@@ -81,7 +81,7 @@ const auth = $auth
 
 const subject = ref('')
 const detail = ref(`<h1>You can upload image.</h1><p>This editor demonstrates how to create a custom TipTap extension with handlers.</p><p>Click the image button in the toolbar to upload a file — it will show a custom [FileUpload](/docs/components/file-upload) interface before inserting the image.</p><p>Try uploading an image below:</p>`)
-const plain = ref('')
+const plain = ref(detail.value.replace(/<[^>]*>/g, ''))
 const source = ref(detail.value)
 
 const results = ref([])
