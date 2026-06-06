@@ -1,75 +1,90 @@
-# Nuxt Minimal Starter
+# メール一斉配信ウェブアプリ「mailsSender」
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Firestoreに登録されたメールアドレスへ、一斉にメールを配信するためのウェブアプリケーションです。
+
+管理画面からHTMLメールおよびプレーンテキストメールを作成し、配信対象者へ送信できます。
+
+## Feature
+
+・メール一斉配信
+・HTMLメール作成
+・プレーンテキストメール作成
+・Firestoreによる配信先管理
+・配信対象者の購読状態（subscribe）の管理
+・Google Workspace SMTPによるメール送信
+・Firebase Authenticationによる認証
+・Firebase App Checkによる不正利用対策
 
 ## Setup
 
-Make sure to install dependencies:
+# システム構成
+フロントエンド：Nuxt 4
+バックエンド：Firebase Cloud Functions
+データベース：Cloud Firestore
+認証：Firebase Authentication
+セキュリティ：Firebase App Check
+ホスティング：Firebase App Hosting
+リッチエディタ：Nuxt UI Editor（Tiptap）
 
-```bash
-# npm
-npm install
+# Firestore構成
+コレクション名：mailto
+ドキュメント　：送信先メールアドレス
+フィールド　　：
+{
+  "subscribe": true
+}
 
-# pnpm
-pnpm install
+# 必要なFirebaseプロダクト
 
-# yarn
-yarn install
+本プロジェクトでは以下のFirebaseプロダクトを利用します。
 
-# bun
-bun install
+・Cloud Functions（Cloud Run）
+・Cloud Firestore
+・App Hosting
+・Firebase Authentication
+・Firebase App Check
+
+# SMTPサーバー設定
+
+本システムは初期状態では Gmail SMTP を利用する設定になっています。
+
+```javascript
+host: 'smtp.gmail.com',
+port: 587,
+secure: false
 ```
 
-## Development Server
+他のメールサービスを利用する場合は、Cloud Functions 内の SMTP 設定を環境に合わせて変更してください。
 
-Start the development server on `http://localhost:3000`:
+例：
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```javascript
+host: 'smtp.office365.com',
+port: 587,
+secure: false
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```javascript
+host: 'mail.example.com',
+port: 587,
+secure: false
 ```
 
-Locally preview production build:
+認証情報は Google Cloud Secret Manager で管理することを推奨します。
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```text
+SMTP_USER
+SMTP_PASS
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+# Secret Manager
+
+シークレット管理には、Google Cloud Platformのシークレットマネージャーを用いることを想定しています。apphosting.yamlを適宜書き換えてください。
+
+# その他
+
+ログイン権限者の登録、送信先アドレスの登録は、Firebase Consoleで直接作成してください。
+
+## License
+
+MIT License
