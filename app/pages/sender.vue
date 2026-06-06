@@ -242,7 +242,7 @@ async function nodeSend(){
         plain: plain.value
       }
     );
-
+console.log(res.data)
     if (res.data?.result) {
       console.log(res.data?.result)
     }
