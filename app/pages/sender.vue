@@ -1,12 +1,12 @@
 <template>
   <div class="p-2">
     <div class="mb-3">
-      <label for="full-name" class="font-[Noto_Sans_JP] block text-sm/6 font-semibold text-gray-900 flex">題名</label>
+      <label for="full-name" class="block text-sm/6 font-semibold text-gray-900 flex">題名</label>
       <input type="text" v-model="subject" :class="`${p} block w-full border border-slate-300 bg-white px-3.5 py-3 text-base text-gray-900 shadow-lg`"/>
     </div>
 
     <div class="">
-      <label for="full-name" class="font-[Noto_Sans_JP] block text-sm/6 font-semibold text-gray-900 flex">配信内容</label>
+      <label for="full-name" class="block text-sm/6 font-semibold text-gray-900 flex">配信内容</label>
       <UEditor
         v-slot="{ editor }"
         v-model="detail"
@@ -58,16 +58,16 @@ import type { Editor } from '@tiptap/vue-3'
 import { ImageUpload } from '../utils/editor/EditorImageUploadExtension'
 import type { EditorSuggestionMenuItem } from '@nuxt/ui'
 
-const disp = 'font-noto 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-5xl text-5xl'
-const h1 = 'font-noto 2xl:text-6xl xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-2xl'
-const h2 = 'font-noto 2xl:text-5xl xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-xl'
-const h3 = 'font-noto 2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-lg'
-const h4 = 'font-noto 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg sm:text-md text-md'
-const h5 = 'font-noto 2xl:text-2xl xl:text-xl lg:text-lg md:text-md sm:text-sm text-sm'
-const p  = 'font-noto 2xl:text-xl xl:text-lg lg:text-md md:text-sm sm:text-xs text-xs'
-const ps = 'font-noto 2xl:text-md xl:text-sm lg:text-xs md:text-xs sm:text-xs text-xs'
+const disp = '2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-5xl text-5xl'
+const h1 = '2xl:text-6xl xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-2xl'
+const h2 = '2xl:text-5xl xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-xl'
+const h3 = '2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-lg'
+const h4 = '2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg sm:text-md text-md'
+const h5 = '2xl:text-2xl xl:text-xl lg:text-lg md:text-md sm:text-sm text-sm'
+const p  = '2xl:text-xl xl:text-lg lg:text-md md:text-sm sm:text-xs text-xs'
+const ps = '2xl:text-md xl:text-sm lg:text-xs md:text-xs sm:text-xs text-xs'
 
-const placeholderH5 = 'font-noto 2xl:autofill:placeholder:text-2xl xl:autofill:placeholder:text-xl lg:autofill:placeholder:text-lg md:autofill:placeholder:text-md sm:autofill:placeholder:text-sm autofill:placeholder:text-sm'
+const placeholderH5 = '2xl:autofill:placeholder:text-2xl xl:autofill:placeholder:text-xl lg:autofill:placeholder:text-lg md:autofill:placeholder:text-md sm:autofill:placeholder:text-sm autofill:placeholder:text-sm'
 
 const { $auth, $firebaseApp } = useNuxtApp()
 const auth = $auth

@@ -43,8 +43,13 @@ export default defineNuxtConfig({
     '~/plugins/firebase.client.ts',
   ],
 
-  modules: ['@nuxt/ui'],
-  
+  modules: ['@nuxt/ui', '@nuxt/fonts'],
+  fonts: {
+    families: [
+      { name: 'Noto Sans JP', provider: 'google', local: true }
+    ]
+  },
+
   nitro: {
     // for the upcoming preset
     firebase: {
