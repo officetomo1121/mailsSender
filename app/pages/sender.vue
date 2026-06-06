@@ -50,6 +50,7 @@
 			<div class="w-1/3">
 				<button v-on:click="nodeSend" variant="outline-primary" size="md" type="button" class="w-full cursor-pointer block rounded-md bg-cyan-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-lg hover:bg-cyan-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" aria-label="送信ボタンです"><p>送信</p></button>
 			</div>
+      <p v-if="results">{{ results }}</p>
 		</div>
 	</div>
 </template>
@@ -74,6 +75,8 @@ const subject = ref('')
 const detail = ref(`<h1>You can upload image.</h1><p>This editor demonstrates how to create a custom TipTap extension with handlers.</p><p>Click the image button in the toolbar to upload a file — it will show a custom [FileUpload](/docs/components/file-upload) interface before inserting the image.</p><p>Try uploading an image below:</p>`)
 const plain = ref('')
 const source = ref(detail.value)
+
+const results = ref([])
 
 const customHandlers = {
   imageUpload: {
@@ -226,6 +229,8 @@ function sourceToDetail(){
 }
 
 async function nodeSend(){
+  results.value=[]
+  
   if (!import.meta.client) {
     console.error("通信エラー2")
 
@@ -242,18 +247,14 @@ async function nodeSend(){
         plain: plain.value
       }
     );
-console.log(res.data)
-    if (res.data?.result) {
-      console.log(res.data?.result)
-    }
-    else {
-      console.error('送信エラー')
-    }
+
+    results.value=res.data
 
     detail.value=''
   }
   catch (error) {
-    console.error(error)
+    results.value=res.data
+    results.value.push(error)
   }
 }
 </script>
