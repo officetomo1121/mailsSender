@@ -26,7 +26,7 @@
           :handlers="customHandlers"
           content-type="html"
           :ui="{ base: 'p-8 sm:px-16' }"
-          class="w-full min-h-74 border border-slate-300 shadow-lg mb-3"
+          class="w-full min-h-74 border border-slate-300 shadow-lg mb-3 rounded-sm"
         >
           <UEditorToolbar
             :editor="editor"
