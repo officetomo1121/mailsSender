@@ -12,7 +12,7 @@
         v-model="detail"
         :extensions="[ImageUpload,
                       TextAlign.configure({
-                        types: ['heading', 'paragraph']
+                        types: ['paragraph', 'heading']
                       })
                      ]"
         :handlers="customHandlers"
@@ -20,6 +20,11 @@
         :ui="{ base: 'p-8 sm:px-16' }"
         class="w-full min-h-74 border border-slate-300 shadow-lg mb-3"
       >
+        <UEditorToolbar
+          :editor="editor"
+          :items="items"
+          class="border-b border-muted py-2 px-8 sm:px-16 overflow-x-auto"
+        />
         <UEditorDragHandle :editor="editor" />
         <UEditorSuggestionMenu :editor="editor" :items="items" :append-to="appendToBody" />
       </UEditor>
