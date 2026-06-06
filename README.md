@@ -18,18 +18,19 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
 ・Firebase App Checkによる不正利用対策
 ```
 
+
 # Setup
 
 ## システム構成
 
 ```text
-フロントエンド：Nuxt 4
-バックエンド：Firebase Cloud Functions
-データベース：Cloud Firestore
-認証：Firebase Authentication
-セキュリティ：Firebase App Check
-ホスティング：Firebase App Hosting
-リッチエディタ：Nuxt UI Editor（Tiptap）
+・フロントエンド：Nuxt 4
+・バックエンド：Firebase Cloud Functions
+・データベース：Cloud Firestore
+・認証：Firebase Authentication
+・セキュリティ：Firebase App Check
+・ホスティング：Firebase App Hosting
+・リッチエディタ：Nuxt UI Editor（Tiptap）
 ```
 
 
@@ -43,6 +44,7 @@ Firestoreに登録されたメールアドレスへ、一斉にメールを配�
   "subscribe": true
 }
 ```
+
 
 ## 必要なFirebaseプロダクト
 
@@ -90,13 +92,16 @@ SMTP_USER
 SMTP_PASS
 ```
 
+
 ## Secret Manager
 
 シークレット管理には、Google Cloud Platformのシークレットマネージャーを用いることを想定しています。apphosting.yamlを適宜書き換えてください。
 
+
 ## その他
 
 ログイン権限者の登録、送信先アドレスの登録は、Firebase Consoleで直接作成してください。
+
 
 # License
 
