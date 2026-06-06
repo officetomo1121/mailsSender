@@ -1,6 +1,7 @@
 <template>
-  <header class="flex flex-row-reverse justify-between border-bottom border-slate-300">
-    <div class="my-5">
+  <header class="flex flex-row-reverse justify-between shadow-lg">
+    <h3>mailsSender</h3>
+    <div class="p-2 my-3 border-b border-slate-200">
       <p class="rounded-md border border-blue-700 bg-white px-4.5 py-1 font-semibold text-nowrap text-blue-700 shadow-xs hover:bg-blue-700 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white cursor-pointer font-noto" @click="glogout">ログアウト</p>
     </div>
   </header>
@@ -52,7 +53,7 @@
 
 		<hr>
 
-		<div class="pt-3 flex flex-center">
+		<div class="pt-3 flex justify-center">
 			<div class="w-1/3">
 				<button v-on:click="nodeSend" variant="outline-primary" size="md" type="button" class="w-full cursor-pointer block rounded-md bg-cyan-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-lg hover:bg-cyan-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600" aria-label="送信ボタンです"><p>送信</p></button>
 			</div>
